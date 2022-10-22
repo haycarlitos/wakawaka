@@ -1,16 +1,31 @@
-import React from 'react'
-import { StyleSheet, SafeAreaView, Pressable, Text } from 'react-native';
+import React, { useRef, useMemo } from 'react'
+import { StyleSheet, SafeAreaView, Pressable, Text, View } from 'react-native';
 import Field from '../components/Field';
 import TeamStats from '../components/TeamStats';
-
-
+import BottomSheet from '@gorhom/bottom-sheet';
+import PlayerListItem from '../components/PlayerListItem';
+import {players} from '../assets/data/players';
 
 export default function TabOneScreen() {
 
+  const playersBottoSheet = useRef<BottomSheet>(null);
+
   const viewPlayers = () => {
-    console.log('holis');
+    playersBottoSheet.current?.expand();
+    //console.log(players)
     
   };
+
+  const snapPoints = useMemo(() => ['50%'], []);
+
+  const jugador =   {
+    //id: '1',
+    name: 'C. Ronaldo',
+    //match: 'BEL v POR',
+    //position: 'FWD',
+    //price: 12,
+    //totalPoints: 29,
+  }
 
   return (
     <SafeAreaView style={styles.container}>
@@ -28,6 +43,15 @@ export default function TabOneScreen() {
           View Players
         </Text>
       </Pressable>
+      <BottomSheet
+        ref={playersBottoSheet}
+        index={-1}
+        snapPoints={snapPoints} 
+      >
+        <View style={styles.contentContainer}>
+        <PlayerListItem player={players[10]}/>
+        </View>
+      </BottomSheet>
     </SafeAreaView>
   );
 }
@@ -47,5 +71,8 @@ const styles = StyleSheet.create({
     width:'90%',
     borderRadius: 50,
     marginTop: 'auto', // Para que el botón siempre éste en la parte de abajo.
+  },
+  contentContainer: {
+
   },
 });
