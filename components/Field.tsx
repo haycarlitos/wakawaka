@@ -15,7 +15,6 @@ const players: { [key: string]: null[]} = {
 
 
 const Field = () => {
-
  
   return (
     <ImageBackground 
