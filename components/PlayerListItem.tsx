@@ -10,7 +10,10 @@ interface Props {
 const PlayerListItem = ({ player }: Props) => {
   return (
     <View style={styles.playerListContainer}>
-        <Image style={styles.image} />
+        <Image 
+            source={{uri: `https://media.api-sports.io/football/players/${player.id}.png`}} 
+            style={styles.image}
+            />
 
         <View style={{flexGrow: 1}}>
             <Text style={styles.name}> { player.name } </Text>
@@ -41,12 +44,15 @@ const styles = StyleSheet.create({
         alignItems: 'flex-end',
     },
     image: {
-
+        width: 40,
+        height: 40,
+        borderRadius: 20,
+        borderBottomWidth: 2,
+        borderColor: '#ddd',
+        marginRight: 10,
     },
     name: {
         fontWeight: 'bold',
-
-
     },
     points: {
         fontWeight: 'bold',

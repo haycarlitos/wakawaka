@@ -2,7 +2,7 @@ import React, { useRef, useMemo } from 'react'
 import { StyleSheet, SafeAreaView, Pressable, Text, View } from 'react-native';
 import Field from '../components/Field';
 import TeamStats from '../components/TeamStats';
-import BottomSheet from '@gorhom/bottom-sheet';
+import BottomSheet, { BottomSheetFlatList } from '@gorhom/bottom-sheet';
 import PlayerListItem from '../components/PlayerListItem';
 import {players} from '../assets/data/players';
 
@@ -10,11 +10,14 @@ export default function TabOneScreen() {
 
   const playersBottoSheet = useRef<BottomSheet>(null);
 
+  const filtersBottomSheet = useRef<BottomSheet>(null);
+
   const viewPlayers = () => {
     playersBottoSheet.current?.expand();
-    //console.log(players)
-    
+    //console.log(players)    
   };
+
+
 
   const snapPoints = useMemo(() => ['50%'], []);
 
@@ -48,9 +51,23 @@ export default function TabOneScreen() {
         index={-1}
         snapPoints={snapPoints} 
       >
-        <View style={styles.contentContainer}>
-        <PlayerListItem player={players[10]}/>
-        </View>
+        <Pressable 
+        onPress={() => filtersBottomSheet.current?.expand()}
+        style={styles.buttonContainer}>
+          <Text>FILTERS</Text>
+        </Pressable>
+        <BottomSheetFlatList 
+          data={players}
+          renderItem={({item}) => <PlayerListItem player={item} />}
+
+        />
+      </BottomSheet>
+      <BottomSheet
+        ref={filtersBottomSheet}
+        index={-1}
+        snapPoints={snapPoints}
+      >
+        <Text>Filters</Text>
       </BottomSheet>
     </SafeAreaView>
   );
