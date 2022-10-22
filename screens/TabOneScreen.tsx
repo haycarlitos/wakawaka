@@ -18,7 +18,7 @@ export default function TabOneScreen() {
     <SafeAreaView style={styles.container}>
       <ImageBackground 
       source={field2}
-      resizeMode='contain'
+      resizeMode='cover'
       style={{
       width:'100%', 
       aspectRatio: 2 / 3,
@@ -41,12 +41,16 @@ export default function TabOneScreen() {
                 <FontAwesome5 
                   name="tshirt"
                   size={35} 
-                  color={player ? "#d170db" : "#5c5c5cbb"} 
-                />
+                  color={player ? '#d170db' : '#5c5c5cbb'} 
+                /> 
                 <Text style={{
-                  backgroundColor:"red",
+                  backgroundColor: '#666666bb',
+                  color: 'white',
+                  fontSize: 12,
                   padding:2,
-                  paddingHorizontal:7,}}>{position}</Text>
+                  paddingHorizontal:7,
+                  fontWeight: 'bold',
+                  }}>{position}</Text>
               </View>
             ))}
           </View>
