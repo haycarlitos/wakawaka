@@ -15,8 +15,9 @@ export default function App() {
   } else {
     return (
       <SafeAreaProvider>
-        <StatusBar />
+
         <TabOneScreen />
+        <StatusBar />
 
       </SafeAreaProvider>
     );

@@ -19,7 +19,7 @@ const Field = () => {
   return (
     <ImageBackground 
     source={field2}
-    resizeMode='cover'
+    resizeMode= 'contain'
     style={{
     width:'100%', 
     aspectRatio: 2 / 3,
