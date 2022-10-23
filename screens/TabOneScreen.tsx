@@ -5,6 +5,7 @@ import TeamStats from '../components/TeamStats';
 import BottomSheet, { BottomSheetFlatList } from '@gorhom/bottom-sheet';
 import PlayerListItem from '../components/PlayerListItem';
 import {players} from '../assets/data/players';
+import Filters from '../components/Filters';
 
 export default function TabOneScreen() {
 
@@ -67,7 +68,7 @@ export default function TabOneScreen() {
         index={-1}
         snapPoints={snapPoints}
       >
-        <Text>Filters</Text>
+        <Filters />
       </BottomSheet>
     </SafeAreaView>
   );
